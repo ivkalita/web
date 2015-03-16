@@ -1,0 +1,30 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 440px;
+	margin: 0 auto;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+div.colontitle-top {
+	height: 20px;
+	width: 100%;
+}
+
+div.colontitle-top h4.page {
+	float: left;
+}
+
+div.colontitle-top h4.title {
+	float: right;
+	font-style: italic;
+	font-weight: 200;
+}
+
+div.content p {
+	text-indent: 20px;
+}
