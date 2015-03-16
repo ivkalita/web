@@ -1,0 +1,61 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	font-family: 'Poiret One', cursive;
+	color: #000;
+	font-size: 20px;
+	background-color: #341C07;
+}
+
+div.wrapper {
+	width: 100%;
+	background-image: url("../images/bg.jpg");
+	background-size: 100%;
+	background-repeat: round;
+	min-height: 900px;
+}
+
+div.content {
+	z-index: 1;
+	width: 100%;
+}
+
+div.centered {
+	text-align: center;
+	background: #9A713E;
+	margin: 30px auto;
+	width: 800px;
+}
+
+div.article {
+	text-align: center;
+	padding: 20px 20px;
+	overflow: hidden;
+}
+
+div.article div.photo {
+	margin: 20px;
+	position: relative;
+	float: right;
+}
+
+div.article div.text {
+	text-align: justify;
+}
+
+div.article::after {
+	clear: both;
+}
+
+
+
