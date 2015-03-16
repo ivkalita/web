@@ -1,0 +1,331 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Open Sans','Helvetica','Arial',sans-serif;
+}
+
+table.wrapper {
+	width: 85%;
+	margin: 0 auto;
+	padding-top: 7px;
+}
+
+/*     HEADER     */
+tr.header-wrapper > td {
+	border-bottom: 1px solid #EFEFEF;
+	margin: 0 auto;
+}
+
+table.header {
+	width: 99.5%;
+	height: inherit;
+	margin-left: 0.5%;
+}
+
+table.header td.logo {
+	width: 185px;
+	background-image: url('../images/logo.svg');
+	background-repeat: no-repeat;
+}
+
+table.header td.controls {
+	width: 80px;
+}
+
+table.widget {
+}
+
+.link {
+	font-size: 13px;
+	font-weight: 700;
+	text-decoration: none;
+	color: #0D71C8;
+	border-bottom: 1px solid #C3DCF1;
+	line-height: 17px;
+}
+
+a:hover {
+	color: #188cf0;
+	border-bottom: 1px solid #188cf0;
+	-webkit-transition: opacity .2s,border .2s,color .2s,background-color .2s;
+	transition: opacity .2s,border .2s,color .2s,background-color .2s;
+}
+
+table.widget td.link {
+	border-bottom: none;
+}
+
+table.widget td.weather-icon {
+	height: 60px;
+	width: 70px;
+	background-image: url('../images/sun.svg');
+	background-position: left center;
+	background-repeat: no-repeat;
+}
+
+table.widget td.weather-text {
+	width: 130px;
+	font-size: 12px;
+	line-height: 17px;
+}
+
+table.widget td.weather-text p.weather-temperature {
+	font-weight: 700;
+}
+
+table.widget td.weather-text p.weather-description {
+}
+
+table.widget td.currency {
+	font-size: 12px;
+	line-height: 17px;
+}
+
+table.widget td.currency p.currency-value {
+	font-weight: 700;
+}
+
+table.widget td.currency p.currency-measure {
+}
+
+table.controls {
+}
+
+table.controls td.menu {
+	background-image: url('../images/menu.svg');
+	background-repeat: no-repeat;
+	background-position: left center;
+	height: 20px;
+	width: 60px;
+}
+
+table.controls td.search {
+	background-image: url('../images/search.svg');
+	background-repeat: no-repeat;
+	background-position: left center;
+	height: 20px;
+	width: 30px;
+}
+
+table.controls td.search a {
+	text-indent: -9000px;
+	float: left;
+	width: 20px;
+}
+
+table.controls td.menu a {
+	text-indent: -9000px;
+	float: left;
+	width: 20px;
+	padding-right: 40px;
+}
+
+/*    CONTENT     */
+
+table.wrapper tr.content-wrapper {
+	width: 100%;
+}
+
+table.wrapper td.layout-left {
+	width: 220px;
+	background-color: #FEFEFE;
+}
+
+table.wrapper td.layout-center {
+	text-align: left;
+	vertical-align: top;
+}
+
+table.wrapper td.layout-right {
+	width: 250px;
+	text-align: left;
+	vertical-align: top;
+	/*background-color: #00F;*/
+}
+
+/*   NAVIGATION   */
+
+ul.nav-main {
+	padding-left: 15px;
+}
+
+ul.nav-main > li {;
+}
+
+ul.nav-main li {
+	list-style: none;
+	font-size: 12px;
+	margin-bottom: 15px;
+}
+
+ul.nav-main li a {
+	font-weight: 400 !important;
+}
+
+ul.nav-main li a.map, a.shop, a.thunder, a.house, a.catalog, a.afisha, a.transport, a.tv, a.drom, a.farpost, a.job, a.bridge, a.sp, a.communication, a.primkupon {
+	position: relative;
+}
+
+ul.nav-main li a.map:before, ul.nav-main a.shop:before, a.thunder:before, a.house:before, a.catalog:before, a.afisha:before, a.transport:before, a.tv:before, a.drom:before, a.farpost:before, a.job:before, a.bridge:before, a.sp:before, a.communication:before, a.primkupon:before {
+	background-repeat: no-repeat;
+	width: 20px;
+	height: 20px;
+	display: block;
+	margin-left: -24px;
+	margin-top: -10px;
+	top: 60%;
+	left: 1px;
+	position: absolute;
+	content: "";
+}
+
+ul.nav-main li a.map:before {
+	background-image: url('../images/map.svg');
+}
+
+ul.nav-main li a.shop:before {
+	background-image: url('../images/cart.svg');
+}
+
+ul.nav-main li a.thunder:before {
+	background-image: url('../images/thunder.svg');
+}
+
+ul.nav-main li a.house:before {
+	background-image: url('../images/house.svg');
+}
+
+ul.nav-main li a.catalog:before {
+	background-image: url('../images/phone.svg');
+}
+
+ul.nav-main li a.afisha:before {
+	background-image: url('../images/martini.svg');
+}
+
+ul.nav-main li a.transport:before {
+	background-image: url('../images/train.svg');
+}
+
+ul.nav-main li a.tv:before {
+	background-image: url('../images/tv.svg');
+}
+
+ul.nav-main li a.drom:before {
+	background-image: url('../images/auto.svg');
+}
+
+ul.nav-main li a.farpost:before {
+	background-image: url('../images/advert.svg');
+}
+
+ul.nav-main li a.job:before {
+	background-image: url('../images/job.svg');
+}
+
+ul.nav-main li a.bridge:before {
+	background-image: url('../images/bridge.svg');
+}
+
+ul.nav-main li a.sp:before {
+	background-image: url('../images/sp.svg');
+}
+
+ul.nav-main li a.communication:before {
+	background-image: url('../images/communication.svg');
+}
+
+ul.nav-main li a.primkupon:before {
+	background-image: url('../images/primkupon.svg');
+}
+
+ul.nav-sub {
+	margin-top: 15px;
+}
+
+ul.nav-sub li {
+	margin: 5px 0;
+}
+
+ul.nav-sub a.sub-link {
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 15px;
+	text-decoration: none;
+	color: #0D71C8;
+}
+
+/*   CONTENT-CENTER  */
+
+table.content {
+	margin-top: -15px;
+}
+
+table.content tr.news > td {
+	vertical-align: top;
+	text-align: left;
+}
+
+tr.news > td h1 {
+	margin-bottom: 10px;
+}
+
+tr.news > td h1 *{
+	font-size: 13px;
+	line-height: 17px;
+	font-weight: 700;
+}
+
+tr.news > td h2 *{
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+tr.news > td img {
+	float: right;
+	margin: 0 20px;
+}
+
+tr.news > td p.main-post {
+	font-size: 13px;
+	line-height: 20px;
+	font-weight: 400;
+	margin-top: 10px;
+}
+
+table.news-preview {
+	margin-top: 10px;
+}
+
+table.news-preview td.time {
+	width: 40px;
+	font-size: 13px;
+	color: #888;
+	vertical-align: top;
+}
+
+table.news-preview td.actual {
+	color: #000;
+}
+
+table.news-preview td.preview h2 {
+	margin-top: -8px;
+	margin-bottom: 5px;
+}
+
+table.content tr.banner-news > td {
+	border: 1px solid #CCC;
+}
+
+tr.banner-news td:first-child {
+	width: 100px;
+}
+
+tr.banner-news img {
+	margin-top: 3px;
+	margin-left: 3px;
+}
