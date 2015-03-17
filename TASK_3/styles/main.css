@@ -3,28 +3,59 @@
 	padding: 0;
 }
 
-body {
-	width: 453px;
+div.content {
+	width: 550px;
+	background-color: #EEE;
 	margin: 0 auto;
-	font-size: 14px;
-	font-weight: 400;
-}
-
-div.colontitle-top {
-	height: 20px;
-	width: 100%;
-}
-
-div.colontitle-top h4.page {
-	float: left;
-}
-
-div.colontitle-top h4.title {
-	float: right;
-	font-style: italic;
-	font-weight: 200;
+	padding: 80px 40px;
+	font-size: 16px;
+	font-family: "Times New Roman", Times, serif;
+	font-weight: 100;
+	line-height: 1.4em;
+	text-align: justify;
 }
 
 div.content p {
 	text-indent: 20px;
+}
+
+div.formulas-wrapper {
+	width: 100%;
+	margin: 0;
+}
+
+.formulas {
+	letter-spacing: 1px;
+}
+
+div.formulas-wrapper > div.formulas {
+	margin: 0 auto;
+	text-align: center;
+}
+
+div.formulas-wrapper > div.page {
+	position: relative;
+	width: 20%;
+	left: 500px;
+	top: -25px;
+}
+
+div.formulas-wrapper::after {
+	clear: both;
+}
+
+div.image-wrapper {
+	width: 100%;
+	margin: 10px auto;
+	text-align: center;
+}
+
+div.image-wrapper > div.image {
+	display: inline-block;
+
+}
+
+div.content span.note {
+	letter-spacing: 3px;
+	font-size: 18px;
 }
