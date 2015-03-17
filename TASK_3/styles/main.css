@@ -3,12 +3,18 @@
 	padding: 0;
 }
 
+h5 {
+	font-size: 14px;
+	font-weight: 200;
+}
+
 div.content {
 	width: 550px;
-	background-color: #EEE;
 	margin: 0 auto;
 	padding: 80px 40px;
+	padding-bottom: 10px;
 	font-size: 16px;
+	height: 840px;
 	font-family: "Times New Roman", Times, serif;
 	font-weight: 100;
 	line-height: 1.4em;
@@ -19,30 +25,30 @@ div.content p {
 	text-indent: 20px;
 }
 
-div.formulas-wrapper {
+div.formula-wrapper {
 	width: 100%;
 	margin: 0;
 }
 
-.formulas {
+.formula {
 	letter-spacing: 1px;
 }
 
-div.formulas-wrapper > div.formulas {
+div.formula-wrapper > div.formula {
 	margin: 0 auto;
 	text-align: center;
 }
 
-div.formulas-wrapper > div.page {
+div.formula-wrapper > div.formula-num {
 	position: relative;
 	width: 20%;
 	left: 500px;
 	top: -25px;
 }
 
-div.formulas-wrapper::after {
-	clear: both;
-}
+/*div.formula-wrapper::after {*/
+	/*clear: both;*/
+/*}*/
 
 div.image-wrapper {
 	width: 100%;
@@ -52,10 +58,19 @@ div.image-wrapper {
 
 div.image-wrapper > div.image {
 	display: inline-block;
-
 }
 
 div.content span.note {
 	letter-spacing: 3px;
 	font-size: 18px;
+}
+
+div.content p.no-indent {
+	text-indent: 0px;
+}
+
+div.colontitle-bottom {
+	margin: 0 auto;
+	text-align: center;
+
 }
