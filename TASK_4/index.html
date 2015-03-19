@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>Задание №4</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="styles/main.css">
+		<link rel="stylesheet" href="styles/colorbox.css">
+		<script src="js/lib/jquery-2.1.3.min.js" type="text/javascript"></script>
+		<script src="js/lib/jquery.colorbox-min.js" type="text/javascript"></script>
+		<script src="js/lib/async.js" type="text/javascript"></script>
+		<script src="js/generator.js" type="text/javascript"></script>
+		<script src="js/sort.js" type="text/javascript"></script>
+		<script src="js/tests.js" type="text/javascript"></script>
+		<script src="js/interface.js" type="text/javascript"></script>
+	</head>
+
+	<body>
+		<div class="content">
+			<div class="tests">
+				<table id="tests-table">
+					<thead>
+						<th>Тест</th>
+						<th>Результат</th>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<div class="buttons">
+				<button type="button" id="btn-test-all">Тестировать всё</button>
+			</div>
+		</div>
+		<div class="toolbar">
+			<div class="test-generator">
+				<h2>Генерация тестов</h2>
+				<div class="form-group">
+					<label for="test-type-select">Тип тестов</label>
+					<select id="test-type-select">
+						<option value="1">Целые числа</option>
+						<option value="2">Дробные числа</option>
+						<option value="3">Строки</option>
+						<option value="4">Объекты</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="test-length-input">Длина каждого теста</label>
+					<input type="number" id="test-length-input" />
+				</div>
+				<div class="form-group">
+					<label for="test-cnt-input">Количество тестов</label>
+					<input type="number" id="test-cnt-input" />
+				</div>
+				<div class="form-group">
+					<button type="button" class="btn-gen">Сгенерировать</button>
+					<button type="button" class="btn-gen-check">Сгенерировать и проверить</button>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
