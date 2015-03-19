@@ -3,6 +3,8 @@ var RESULT_EQUAL   = 0,
 	RESULT_LESS    = 2
 ;
 
+var async = require('async');
+
 function mergeSort(comparator, arr, left, right, cb) {
 	if (left - right === 0) {
 		cb(null, [arr[left]]);
@@ -66,3 +68,11 @@ function mergeSort(comparator, arr, left, right, cb) {
 		}
 	);
 }
+
+
+module.exports = {
+	RESULT_EQUAL: 0,
+	RESULT_GREATER: 1,
+	RESULT_LESS: 2,
+	mergeSort: mergeSort
+};

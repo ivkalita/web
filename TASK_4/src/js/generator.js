@@ -4,7 +4,11 @@ var TEST_TYPE_INT = 1,
 	TEST_TYPE_OBJECT = 4
 ;
 
-var Generator = {
+module.exports = {
+	TEST_TYPE_INT: TEST_TYPE_INT,
+	TEST_TYPE_FLOAT: TEST_TYPE_FLOAT,
+	TEST_TYPE_STRING: TEST_TYPE_STRING,
+	TEST_TYPE_OBJECT: TEST_TYPE_OBJECT,
 	genIntArray: function(len) {
 		var result = [];
 		for (var i = 0; i < len; i++) {

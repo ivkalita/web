@@ -12,6 +12,15 @@ var STATUS_UNKNOWN = {
     }
 ;
 
+var jsBeautify = require('js-beautify').js_beautify,
+	sortBundle = require('./sort.js'),
+	mergeSort = sortBundle.mergeSort,
+	RESULT_EQUAL = sortBundle.RESULT_EQUAL,
+	RESULT_GREATER = sortBundle.RESULT_GREATER,
+	RESULT_LESS = sortBundle.RESULT_LESS
+;	
+	
+
 function Test(id, test, etalon, comparator) {
 	defaultComparator = function(a, b) {
 		return a === b ? RESULT_EQUAL : a > b ? RESULT_GREATER : RESULT_LESS; 
@@ -93,6 +102,16 @@ Test.prototype.make = function() {
 	});	
 }
 
+Test.prototype.checkSize = function(arr) {
+	if (arr.hasOwnProperty('length')) {
+		if (arr.length > 50) {
+			return 'Возможно, вам не важно, что здесь написано';
+		}
+		return arr;
+	}
+	return arr;
+}
+
 Test.prototype.renderDescription = function(num) {
 	var wrapper = $('<div></div>').toggleClass('test-info');
 	var title = $('<h1></h1>').text('Тест № ' + (num + 1));
@@ -102,8 +121,8 @@ Test.prototype.renderDescription = function(num) {
 			$('<h2></h2>').text('Входные данные:')
 		)
 		.append(
-			$('<code></code>').text(
-				JSON.stringify(this.test)
+			$('<pre></pre>').text(
+				jsBeautify(JSON.stringify(this.checkSize(this.test)), {indent_size: 2})
 			)
 		)
 	;
@@ -113,8 +132,8 @@ Test.prototype.renderDescription = function(num) {
 				$('<h2></h2>').text('Проверяющая функция:')
 			)
 			.append(
-				$('<code></code>').text(
-					this.etalon.toString()
+				$('<pre></pre>').text(
+					jsBeautify(this.etalon.toString(), {indent_size: 2})
 				)
 			)
 		;
@@ -125,8 +144,8 @@ Test.prototype.renderDescription = function(num) {
 				$('<h2></h2>').text('Эталонные данные:')
 			)
 			.append(
-				$('<code></code>').text(
-					JSON.stringify(this.etalon)
+				$('<pre></pre>').text(
+					jsBeautify(JSON.stringify(this.checkSize(this.etalon)), {indent_size: 2})
 				)
 			)
 		;
@@ -136,8 +155,8 @@ Test.prototype.renderDescription = function(num) {
 			$('<h2></h2>').text('Компаратор:')
 		)
 		.append(
-			$('<code></code>').text(
-				this.comparator.toString()
+			$('<pre></pre>').text(
+				jsBeautify(this.comparator.toString(), {indent_size: 2})
 			)
 		)
 		.append(
@@ -155,8 +174,8 @@ Test.prototype.renderDescription = function(num) {
 				$('<h3></h3>').text('Выходные данные:')
 			)
 			.append(
-				$('<code></code>').text(
-					JSON.stringify(this.lastResult.out)
+				$('<pre></pre>').text(
+					jsBeautify(JSON.stringify(this.checkSize(this.lastResult.out)), {indent_size: 2})
 				)
 			)
 			.append(
@@ -166,6 +185,9 @@ Test.prototype.renderDescription = function(num) {
 	}
 	wrapper.append(title);
 	wrapper.append(testData);
+	wrapper.find('pre').each(function(i, block) {
+		hljs.highlightBlock(block);
+	})
 	return wrapper;
 }
 
@@ -202,8 +224,11 @@ Test.prototype.click = function(func) {
 	this.view.testCell.click(func);
 }
 
-var tests = [
-	new Test(0, [4, 1, 2, 6], [1, 2, 4, 6]),
-	new Test(1, ['b', 'd', 'a', 'c', 'e'], ['a', 'b', 'c', 'd', 'e']),
-	new Test(2, [4, 1, 2, 6])
-];
+module.exports = {
+	Test: Test,
+	tests: [
+		new Test(0, [4, 1, 2, 6], [1, 2, 4, 6]),
+		new Test(1, ['b', 'd', 'a', 'c', 'e'], ['a', 'b', 'c', 'd', 'e']),
+		new Test(2, [4, 1, 2, 6])
+	]
+};

@@ -1,3 +1,11 @@
+var $ = require('jquery-browserify'),
+	Generator = require('./generator.js'),
+	TestsBundle = require('./tests.js'),
+	tests = TestsBundle.tests,
+	Test = TestsBundle.Test
+;
+require('jquery-colorbox');
+
 function testCellClick() {
 	var id = $(this).data('id');
 	$.colorbox({
@@ -23,7 +31,7 @@ $(function() {
 		}
 	});
 
-	$('button.btn-gen').click(function() {
+	$('#btn-gen').click(function() {
 		var len = parseInt($('#test-length-input').val())
 			cnt = parseInt($('#test-cnt-input').val()),
 			type = parseInt($('#test-type-select').val()),
@@ -34,7 +42,7 @@ $(function() {
 		if (cnt == 0 || len == 0) {
 			return;
 		}
-		if (type == TEST_TYPE_OBJECT) {
+		if (type == Generator.TEST_TYPE_OBJECT) {
 			comparator = Test.prototype.objectComparator;
 		}
 		for (var i = 0; i < cnt; i++) {
@@ -44,5 +52,10 @@ $(function() {
 			tbody.append(tests[id + i].view.row);
 			tests[id + i].click(testCellClick);
 		}
+	});
+
+	$('#btn-gen-check').click(function() {
+		$('#btn-gen').click();
+		$('#btn-test-all').click();
 	});
 });
