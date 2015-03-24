@@ -35,7 +35,7 @@ function mergeSort(comparator, arr, left, right, cb) {
 			if (err) {
 				console.log('Mystery exception happened');
 				console.log(err);
-				throw err;
+				cb(err, null);
 			}
 			var a = results.a,
 				b = results.b,

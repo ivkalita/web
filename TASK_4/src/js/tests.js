@@ -22,26 +22,11 @@ var jsBeautify = require('js-beautify').js_beautify,
 	
 
 function Test(id, test, etalon, comparator) {
-	defaultComparator = function(a, b) {
-		return a === b ? RESULT_EQUAL : a > b ? RESULT_GREATER : RESULT_LESS; 
-	};
-
-	defaultEtalon = function(arr) {
-		var status = STATUS_SUCCESS;
-		for (var i = 1; i < arr.length; i++) {
-			if (this.comparator(arr[i], arr[i - 1]) === RESULT_GREATER) {
-				status = STATUS_FAILED;
-				break;
-			}
-		}
-		return status;
-	};
-
 	this.id = id;
 	this.test = test;
 	this.etalon = etalon;
-	this.comparator = typeof(comparator) === 'function' ? comparator : defaultComparator;
-	this.etalon = typeof(etalon) === 'undefined' || etalon === null ? defaultEtalon : etalon;
+	this.comparator = typeof(comparator) === 'function' ? comparator : this.defaultComparator;
+	this.etalon = typeof(etalon) === 'undefined' || etalon === null ? this.defaultEtalon : etalon;
 	this.lastResult = {
 		status: STATUS_UNKNOWN,
 		time: 0,
@@ -56,12 +41,26 @@ Test.prototype.defaultComparator = function(a, b) {
 };
 
 Test.prototype.defaultEtalon = function(arr) {
-	var status = STATUS_SUCCESS;
+	var status = STATUS_SUCCESS,
+		test = this.test.slice(0)
+	;
+	if (arr.length !== test.length) {
+		return STATUS_FAILED;
+	}
 	for (var i = 1; i < arr.length; i++) {
-		if (this.comparator(arr[i], arr[i - 1]) === RESULT_GREATER) {
+		idx = test.indexOf(arr[i - 1]);
+		if (idx == -1) {
 			status = STATUS_FAILED;
 			break;
 		}
+		test = test.slice(0, idx).concat(test.slice(idx + 1, test.length));
+		if (this.comparator(arr[i], arr[i - 1]) === RESULT_LESS) {
+			status = STATUS_FAILED;
+			break;
+		}
+	}
+	if (test.length !== 1 || this.comparator(test[0], arr[arr.length - 1]) !== RESULT_EQUAL) {
+		status = STATUS_FAILED;
 	}
 	return status;
 };
@@ -81,7 +80,7 @@ Test.prototype.make = function() {
 		};
 		var status = STATUS_SUCCESS;
 		if (typeof($test.etalon) === 'function') {
-			status = $test.etalon(out);
+			status = $test.etalon(out.result);
 		} else if ($test.etalon.length !== out.result.length) {
 			status = STATUS_FAILED;
 		} else {
@@ -105,7 +104,7 @@ Test.prototype.make = function() {
 Test.prototype.checkSize = function(arr) {
 	if (arr.hasOwnProperty('length')) {
 		if (arr.length > 50) {
-			return 'Возможно, вам не важно, что здесь написано';
+			return 'Длина массива равна ' + arr.length;
 		}
 		return arr;
 	}
@@ -202,6 +201,7 @@ Test.prototype.renderView = function() {
 	var resultCell = $('<td></td>');
 
 	var row = $('<tr></tr>')
+		.attr('data-id', this.id)
 		.append(testCell)
 		.append(resultCell);
 
@@ -221,7 +221,7 @@ Test.prototype.refreshView = function() {
 }
 
 Test.prototype.click = function(func) {
-	this.view.testCell.click(func);
+	this.view.row.click(func);
 }
 
 module.exports = {

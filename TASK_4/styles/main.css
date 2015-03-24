@@ -45,8 +45,8 @@ div.content {
 	border-right: 1px solid black;
 }
 
-#tests-table td.test-cell:hover {
-	color: #47F;
+#tests-table tbody tr:hover {
+	background-color: #8AF;
 	cursor: pointer;
 }
 
