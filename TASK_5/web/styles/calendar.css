@@ -1,0 +1,136 @@
+.invisible {
+	display: none;
+}
+
+div.calendar-wrapper {
+	width: 151px;
+}
+
+/* CALENDAR INPUT */
+
+div.calendar-input {
+	width: 150px;
+	border: 1px solid black;
+	border-bottom: none;
+}
+
+div.calendar-input input.calendar-input {
+	height: 20px;
+	margin: 0;
+	padding: 0;
+	width: 130px;
+	border: none;
+}
+
+div.calendar-input button.calendar-search-btn {
+	width: 20px;
+	height: 20px;
+	border: none;
+	transition: background-color 0.1s ease-out 0.1s;
+	-webkit-transition: background-color 0.1s ease-out 0.1s;
+	-moz-transition: background-color 0.1s ease-out 0.1s;
+	-o-transition: background-color 0.1s ease-out 0.1s;
+}
+
+div.calendar-input button.calendar-search-btn:hover {
+	background-color: #CCC;
+	cursor: pointer;
+}
+
+/* CALENDAR MAIN */
+
+div.calendar-main {
+	width: 150px;
+	background-color: #DDD;
+	transition: height ease-in 0.2s;
+	-webkit-transition: height ease-in 0.2s;
+	-moz-transition: height ease-in 0.2s;
+	-o-transition: height ease-in 0.2s;
+	height: 0px;
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-top: none;
+	overflow: hidden;
+}
+
+div.calendar-fullsize {
+	height: 123px;
+	border-top: 1px solid black;
+}
+
+div.calendar-miminized {
+	height: 0px;
+}
+
+div.calendar-main div.calendar-hide-btn {
+	height: 12px;
+	border: none;
+	width: 146px;
+	text-align: center;
+	padding: 2px;
+	font-size: 10px;
+	background-color: #EEE;
+	cursor: pointer;
+	color: #555;
+	margin-top: 1px;
+}
+
+div.calendar-main div.calendar-selector {
+	position: relative;
+	width: 146px;
+	height: 12px;
+	padding: 2px;
+	overflow: hidden;
+	font-size: 12px;
+}
+
+/* CALENDAR SELECTOR */
+
+div.calendar-selector div.calendar-prev-btn {
+	display: inline-block;
+	margin-right: 20px;
+	cursor: pointer;
+}
+
+div.calendar-selector div.calendar-next-btn {
+	display: inline-block;
+	margin-left: 20px;
+	cursor: pointer;
+}
+
+div.calendar-selector div.calendar-info {
+	cursor: pointer;
+	width: 91px;
+	text-align: center;
+	font-size: 12px;
+	/*margin: 0 auto;*/
+	display: inline-block;
+}
+
+/* CALENDAR TABLE */
+
+div.calendar-main div.calendar-data {
+	height: 90px;
+	line-height: 1px;
+	width: 150px;
+}
+
+
+div.calendar-data table.calendar-data-table {
+	table-layout: fixed;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table.calendar-data-table td.calendar-data-cell {
+	/*display: inline-block;*/
+	border: 1px solid #000;
+}
+
+table.calendar-data-table td.calendar-data-cell:first-child {
+	border-left: none;
+}
+
+table.calendar-data-table td.calendar-data-cell:last-child {
+	border-right: none;
+}
