@@ -3,36 +3,44 @@
 }
 
 div.calendar-wrapper {
-	width: 151px;
+	width: 200px;
 }
 
 /* CALENDAR INPUT */
 
 div.calendar-input {
-	width: 150px;
+	width: 198px;
 	border: 1px solid black;
 	border-bottom: none;
+	height: 20px;
+	overflow: hidden;
 }
 
 div.calendar-input input.calendar-input {
 	height: 20px;
 	margin: 0;
 	padding: 0;
-	width: 130px;
+	width: 178px;
 	border: none;
 }
 
-div.calendar-input button.calendar-search-btn {
-	width: 20px;
-	height: 20px;
+div.calendar-input div.calendar-search-btn {
+	width: 18px;
+	height: 18px;
+	top: -1px;
+	position: relative;
 	border: none;
+	display: inline-block;
+	background-color: #DDD;
+	text-align: center;
+	padding: 1px;
 	transition: background-color 0.1s ease-out 0.1s;
 	-webkit-transition: background-color 0.1s ease-out 0.1s;
 	-moz-transition: background-color 0.1s ease-out 0.1s;
 	-o-transition: background-color 0.1s ease-out 0.1s;
 }
 
-div.calendar-input button.calendar-search-btn:hover {
+div.calendar-input div.calendar-search-btn:hover {
 	background-color: #CCC;
 	cursor: pointer;
 }
@@ -40,7 +48,7 @@ div.calendar-input button.calendar-search-btn:hover {
 /* CALENDAR MAIN */
 
 div.calendar-main {
-	width: 150px;
+	width: 198px;
 	background-color: #DDD;
 	transition: height ease-in 0.2s;
 	-webkit-transition: height ease-in 0.2s;
@@ -54,7 +62,7 @@ div.calendar-main {
 }
 
 div.calendar-fullsize {
-	height: 123px;
+	height: 149px;
 	border-top: 1px solid black;
 }
 
@@ -65,56 +73,55 @@ div.calendar-miminized {
 div.calendar-main div.calendar-hide-btn {
 	height: 12px;
 	border: none;
-	width: 146px;
+	width: 100%;
 	text-align: center;
-	padding: 2px;
 	font-size: 10px;
 	background-color: #EEE;
 	cursor: pointer;
 	color: #555;
-	margin-top: 1px;
-}
-
-div.calendar-main div.calendar-selector {
-	position: relative;
-	width: 146px;
-	height: 12px;
-	padding: 2px;
-	overflow: hidden;
-	font-size: 12px;
 }
 
 /* CALENDAR SELECTOR */
 
+div.calendar-main div.calendar-selector {
+	position: relative;
+	width: 100%;
+	height: 12px;
+	padding: 1px;
+	overflow: hidden;
+	font-size: 12px;
+}
+
 div.calendar-selector div.calendar-prev-btn {
 	display: inline-block;
-	margin-right: 20px;
+	margin-right: 20%;
+	width: 5%;
 	cursor: pointer;
 }
 
 div.calendar-selector div.calendar-next-btn {
 	display: inline-block;
-	margin-left: 20px;
+	margin-left: 20%;
+	width: 5%;
 	cursor: pointer;
 }
 
 div.calendar-selector div.calendar-info {
 	cursor: pointer;
-	width: 91px;
+	width: 50%;
 	text-align: center;
 	font-size: 12px;
-	/*margin: 0 auto;*/
 	display: inline-block;
 }
 
 /* CALENDAR TABLE */
 
 div.calendar-main div.calendar-data {
-	height: 90px;
+	height: 123px;
 	line-height: 1px;
-	width: 150px;
+	width: 100%;
+	font-size: 10px;
 }
-
 
 div.calendar-data table.calendar-data-table {
 	table-layout: fixed;
@@ -123,8 +130,9 @@ div.calendar-data table.calendar-data-table {
 }
 
 table.calendar-data-table td.calendar-data-cell {
-	/*display: inline-block;*/
 	border: 1px solid #000;
+	text-align: center;
+	vertical-align: middle;
 }
 
 table.calendar-data-table td.calendar-data-cell:first-child {
@@ -133,4 +141,16 @@ table.calendar-data-table td.calendar-data-cell:first-child {
 
 table.calendar-data-table td.calendar-data-cell:last-child {
 	border-right: none;
+}
+
+table.calendar-data-table td.calendar-data-cell.calendar-data-cell-title {
+	color: #444;
+}
+
+table.calendar-data-table td.calendar-data-cell.calendar-data-cell-enabled {
+
+}
+
+table.calendar-data-table td.calendar-data-cell.calendar-data-cell-disabled {
+	color: #666;
 }
