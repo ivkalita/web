@@ -1,5 +1,6 @@
 var Calendar = require('./calendar.js'),
 	$ = require('./nojquery.js')
+	// $ = require('jquery-browserify')
 ;
 
 window.$ = $;

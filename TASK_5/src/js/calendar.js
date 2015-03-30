@@ -1,4 +1,5 @@
 var $ = require('./nojquery.js'),
+// var $ = require('jquery-browserify'),
 	daysNames = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
 	monthNames = [
 		'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
@@ -35,7 +36,7 @@ function Calendar(elem, options) {
 				}
 				if (daysNames.length > x && x >= 0) {
 					elem
-						.class('calendar-data-cell calendar-data-cell-title')
+						.addClass('calendar-data-cell-title')
 						.text(daysNames[x]);
 				}
 			}
@@ -123,58 +124,58 @@ function Calendar(elem, options) {
 
 Calendar.prototype.renderView = function() {
 	$calendar = this;
+	this.elem.children().remove();
 	this.elem
-		.removeChildren()
 		.append(
 			this.view.wrapper = $('<div></div>')
-				.class('calendar-wrapper')
+				.addClass('calendar-wrapper')
 				.append(
 					$('<div></div>')
-						.class('calendar-input')
+						.addClass('calendar-input')
 						.append(
 							this.view.input = $('<input></input>')
-								.class('calendar-input')
+								.addClass('calendar-input')
 								.click(this.inputClick.bind($calendar))
 								.keypress(this.inputKeyPress.bind($calendar))
 						)
 						.append(
 							this.view.searchBtn = $('<div></div>')
-								.class('calendar-search-btn')
+								.addClass('calendar-search-btn')
 								.click(this.searchClick.bind($calendar))
 						)
 				)
 				.append(
 					this.view.main = $('<div></div>')
-						.class('calendar-main')
+						.addClass('calendar-main')
 						.append(
 							this.view.menu = $('<div></div>')
-								.class('calendar-selector')
+								.addClass('calendar-selector')
 								.append(
 									this.view.prevBtn = $('<div></div>')
-										.class('calendar-prev-btn')
+										.addClass('calendar-prev-btn')
 										.click(this.prevClick.bind($calendar))
 										.text('<')
 								)
 								.append(
 									this.view.info = $('<div></div>')
-										.class('calendar-info')
+										.addClass('calendar-info')
 										.click(this.infoClick.bind($calendar))
 										.text('Сентябрь 2015')
 								)
 								.append(
 									this.view.nextBtn = $('<div></div>')
-										.class('calendar-next-btn')
+										.addClass('calendar-next-btn')
 										.click(this.nextClick.bind($calendar))
 										.text('>')
 								)
 						)
 						.append(
 							this.view.data = $('<div></div>')
-								.class('calendar-data')
+								.addClass('calendar-data')
 						)
 						.append(
 							this.view.hideBtn = $('<div></div>')
-								.class('calendar-hide-btn')
+								.addClass('calendar-hide-btn')
 								.click(this.hideClick.bind($calendar))
 								.text('Скрыть')
 						)
@@ -196,7 +197,7 @@ Calendar.prototype.date = function(value) {
 	}
 	this.data.selected = inDate;
 	this.renderDaysPage(inDate.getMonth(), inDate.getFullYear());
-	this.view.input.value([
+	this.view.input.val([
 		this._addLeadNulls(inDate.getDate(), 2),
 		this._addLeadNulls(inDate.getMonth() + 1, 2),
 		this._addLeadNulls(inDate.getFullYear(), 4)
@@ -399,11 +400,11 @@ Calendar.prototype.createPlaces = function(finalize) {
 		row,
 		table
 	;
-	this.view.data.removeChildren();
+	this.view.data.children().remove();
 	this.view.items = [];
 	this.view.data.append(
 		$('<table></table>')
-			.class('calendar-data-table')
+			.addClass('calendar-data-table')
 			.append(table = $('<tbody></tbody>'))
 	);
 	for (var y = 0; y < this.layout.colCnt; y++) {
@@ -411,7 +412,7 @@ Calendar.prototype.createPlaces = function(finalize) {
 		this.view.items.push([]);
 		for (var x = 0; x < this.layout.rowCnt; x++) {
 			var item = $('<td></td>')
-				.class('calendar-data-cell')
+				.addClass('calendar-data-cell')
 				.height(itemHeight)
 				.width(itemWidth)
 			;
@@ -433,7 +434,7 @@ Calendar.prototype.hideClick = function() {
 }
 
 Calendar.prototype.searchClick = function() {
-	var value = this.view.input.value(),
+	var value = this.view.input.val(),
 		rdate = /^\D*?(\d+)\D+?(\d+)\D+?(\d+)\D*?$/,
 		match = rdate.exec(value)
 	;

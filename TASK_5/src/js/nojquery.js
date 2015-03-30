@@ -59,7 +59,7 @@ function NoJQuery(selector) {
 	}
 }
 
-NoJQuery.prototype.removeChildren = function() {
+NoJQuery.prototype.remove = function() {
 	if (this.length === 0) {
 		return this;
 	}
@@ -68,6 +68,10 @@ NoJQuery.prototype.removeChildren = function() {
 			this[i].children[j].remove();
 		}
 	}
+	return this;
+}
+
+NoJQuery.prototype.children = function() {
 	return this;
 }
 
@@ -244,7 +248,7 @@ NoJQuery.prototype.height = function(value) {
 	return this;
 }
 
-NoJQuery.prototype.value = function(value) {
+NoJQuery.prototype.val = function(value) {
 	if ((typeof(value) === 'undefined' && this.length !== 1) || (typeof(value) !== 'undefined' && typeof(value) !== 'number' && typeof(value) !== 'string')) {
 		return undefined;
 	}
