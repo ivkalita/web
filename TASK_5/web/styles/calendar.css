@@ -22,26 +22,36 @@ div.calendar-input input.calendar-input {
 	padding: 0;
 	width: 178px;
 	border: none;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
 }
 
 div.calendar-input div.calendar-search-btn {
-	width: 18px;
-	height: 18px;
-	top: -1px;
+	display: inline-block;
+	vertical-align: top;
+	width: 20px;
+	height: 20px;
 	position: relative;
 	border: none;
-	display: inline-block;
-	background-color: #DDD;
+	background-color: #E8D9BD;
+	background-image: url('images/search-icon.png');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
 	text-align: center;
-	padding: 1px;
 	transition: background-color 0.1s ease-out 0.1s;
 	-webkit-transition: background-color 0.1s ease-out 0.1s;
 	-moz-transition: background-color 0.1s ease-out 0.1s;
 	-o-transition: background-color 0.1s ease-out 0.1s;
+	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+	-moz-user-select: none; /* mozilla browsers */
+	-khtml-user-select: none; /* webkit (konqueror) browsers */
+	-ms-user-select: none; /* IE10+ */
+
 }
 
 div.calendar-input div.calendar-search-btn:hover {
-	background-color: #CCC;
+	background-color: #FFCB90;
 	cursor: pointer;
 }
 
@@ -49,20 +59,22 @@ div.calendar-input div.calendar-search-btn:hover {
 
 div.calendar-main {
 	width: 198px;
-	background-color: #DDD;
-	transition: height ease-in 0.2s;
-	-webkit-transition: height ease-in 0.2s;
-	-moz-transition: height ease-in 0.2s;
-	-o-transition: height ease-in 0.2s;
-	height: 0px;
+	background-color: #FFEFDC;
+	transition: max-height ease-in 0.2s;
+	-webkit-transition: max-height ease-in 0.2s;
+	-moz-transition: max-height ease-in 0.2s;
+	-o-transition: max-height ease-in 0.2s;
+	max-height: 0px;
 	border: 1px solid black;
 	border-collapse: collapse;
 	border-top: none;
 	overflow: hidden;
+	position: absolute;
 }
 
 div.calendar-fullsize {
-	height: 149px;
+	max-height: 250px;
+	height: auto;
 	border-top: 1px solid black;
 }
 
@@ -71,14 +83,24 @@ div.calendar-miminized {
 }
 
 div.calendar-main div.calendar-hide-btn {
-	height: 12px;
+	height: 14px;
 	border: none;
 	width: 100%;
 	text-align: center;
 	font-size: 10px;
-	background-color: #EEE;
+	background-color: #FFEFDC;
 	cursor: pointer;
 	color: #555;
+	padding-top: 4px;
+	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+	-moz-user-select: none; /* mozilla browsers */
+	-khtml-user-select: none; /* webkit (konqueror) browsers */
+	-ms-user-select: none; /* IE10+ */
+}
+
+div.calendar-main div.calendar-hide-btn:hover {
+	background-color: #FFCB90;
+	cursor: pointer;
 }
 
 /* CALENDAR SELECTOR */
@@ -86,10 +108,16 @@ div.calendar-main div.calendar-hide-btn {
 div.calendar-main div.calendar-selector {
 	position: relative;
 	width: 100%;
-	height: 12px;
+	height: 20px;
 	padding: 1px;
 	overflow: hidden;
 	font-size: 12px;
+	background-color: #7F6648;
+	color: #FFEFDC;
+	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+	-moz-user-select: none; /* mozilla browsers */
+	-khtml-user-select: none; /* webkit (konqueror) browsers */
+	-ms-user-select: none; /* IE10+ */
 }
 
 div.calendar-selector div.calendar-prev-btn {
@@ -110,17 +138,19 @@ div.calendar-selector div.calendar-info {
 	cursor: pointer;
 	width: 50%;
 	text-align: center;
-	font-size: 12px;
+	font-size: 14px;
+	padding: 2px 0;
+	font-weight: 700;
 	display: inline-block;
 }
 
 /* CALENDAR TABLE */
 
 div.calendar-main div.calendar-data {
-	height: 123px;
+	height: inherit;
 	line-height: 1px;
 	width: 100%;
-	font-size: 10px;
+	font-size: 14px;
 }
 
 div.calendar-data table.calendar-data-table {
@@ -133,6 +163,11 @@ table.calendar-data-table td.calendar-data-cell {
 	border: 1px solid #000;
 	text-align: center;
 	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+	-moz-user-select: none; /* mozilla browsers */
+	-khtml-user-select: none; /* webkit (konqueror) browsers */
+	-ms-user-select: none; /* IE10+ */
 }
 
 table.calendar-data-table td.calendar-data-cell:first-child {
@@ -143,14 +178,78 @@ table.calendar-data-table td.calendar-data-cell:last-child {
 	border-right: none;
 }
 
+/* cell - title */
+
 table.calendar-data-table td.calendar-data-cell.calendar-data-cell-title {
-	color: #444;
+	color: #FFEFDC;
+	background-color: #9D91B2;
+	font-weight: 700;
+	font-size: 14px;
+	cursor: default;
 }
+
+/* cell - weekend */
+
+table.calendar-data-table td.calendar-data-cell.calendar-data-cell-weekend {
+	background-color: #FFBFDC;
+}
+
+table.calendar-data-table td.calendar-data-cell.calendar-data-cell-disabled.calendar-data-cell-weekend {
+	background-color: #FFAABA;
+}
+
+table.calendar-data-table td.calendar-data-cell.calendar-data-cell-enabled.calendar-data-cell-weekend {
+}
+
+table.calendar-data-table td.calendar-data-cell.calendar-data-cell-disabled.calendar-data-cell.calendar-data-cell-selected.calendar-data-cell-weekend {
+	background-color: #998547;
+	color: #FFF;	
+}
+
+/* cell - enabled */
 
 table.calendar-data-table td.calendar-data-cell.calendar-data-cell-enabled {
-
 }
+
+table.calendar-data-table td.calendar-data-cell.calendar-data-cell-enabled:hover{
+	background-color: #FFCB90;
+}
+
+/* cell - disabled */
 
 table.calendar-data-table td.calendar-data-cell.calendar-data-cell-disabled {
 	color: #666;
+	cursor: default;
+}
+
+
+/* cell - today */
+
+table.calendar-data-table td.calendar-data-cell.calendar-data-cell-today {
+	background-color: #F00;
+}
+
+table.calendar-data-table td.calendar-data-cell.calendar-data-cell-today:hover {
+	background-color: #0F0;
+}
+
+table.calendar-data-table td.calendar-data-cell.calendar-data-cell-today.calendar-data-cell.calendar-data-cell-selected {
+	background-color: #0F0;
+}
+
+/* cell - selected */
+
+table.calendar-data-table td.calendar-data-cell.calendar-data-cell-selected {
+	background-color: #998547;
+	color: #FFF;
+}
+
+
+table.calendar-data-table td.calendar-data-cell.calendar-data-cell-selected:hover {
+	background-color: #C3FFCE;
+	color: 	#000;
+}
+
+table.calendar-data-table td.calendar-data-cell.calendar-data-cell-month {
+	font-size: 11px;
 }

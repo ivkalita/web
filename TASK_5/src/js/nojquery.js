@@ -193,13 +193,13 @@ NoJQuery.prototype.data = function(key, value) {
 		if (typeof(this[0]._data) === 'undefined') {
 			return undefined;
 		}
-		return this[0]._data.key;
+		return this[0]._data[key];
 	}
 	for (var i = 0; i < this.length; i++) {
 		if (typeof(this[i]._data) === 'undefined') {
 			this[i]._data = {};
 		}
-		this[i]._data.key = value;
+		this[i]._data[key] = value;
 	}
 	return this;
 }
@@ -207,6 +207,13 @@ NoJQuery.prototype.data = function(key, value) {
 NoJQuery.prototype.click = function(func) {
 	for (var i = 0; i < this.length; i++) {
 		this[i].onclick = func;
+	}
+	return this;
+}
+
+NoJQuery.prototype.keypress = function(func) {
+	for (var i = 0; i < this.length; i++) {
+		this[i].onkeypress = func;
 	}
 	return this;
 }
@@ -233,6 +240,19 @@ NoJQuery.prototype.height = function(value) {
 	}
 	for (var i = 0; i < this.length; i++) {
 		this[i].style['height'] = value + 'px';
+	}
+	return this;
+}
+
+NoJQuery.prototype.value = function(value) {
+	if ((typeof(value) === 'undefined' && this.length !== 1) || (typeof(value) !== 'undefined' && typeof(value) !== 'number' && typeof(value) !== 'string')) {
+		return undefined;
+	}
+	if (typeof(value) === 'undefined') {
+		return this[0].value;
+	}
+	for (var i = 0; i < this.length; i++) {
+		this[i].value = value;
 	}
 	return this;
 }
