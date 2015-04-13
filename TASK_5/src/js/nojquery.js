@@ -9,7 +9,6 @@ function NoJQuery(selector) {
 		return attr;
 	}
 
-
 	rid = /^#([\w\W]+)$/;
 	rtag = /^<([\w\W]+?)><\/\1>$/;
 	if (!selector) {

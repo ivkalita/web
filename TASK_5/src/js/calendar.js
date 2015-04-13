@@ -75,7 +75,7 @@ function Calendar(elem, options) {
 		if (typeof(value) === 'string') {
 			date = new Date(value);
 			if (date.toString() === 'Invalid Date') {
-				console.log('Warn: Calendar.prototype.date() Invalid Date value = ' + value);
+				console.log('Warn: Calendar._toDate() Invalid Date value = ' + value);
 				return null;
 			}
 		} else if (typeof(value) === 'object' && value.constructor.name === 'Date') {
@@ -185,8 +185,6 @@ Calendar.prototype.renderView = function() {
 	return this;
 }
 
-//Calendar actions
-
 Calendar.prototype.date = function(value) {
 	var inDate;
 	if (typeof(value) === 'undefined') {
@@ -204,8 +202,6 @@ Calendar.prototype.date = function(value) {
 	].join('.'));
 	return this;
 }
-
-//Calendar internal actions
 
 Calendar.prototype.renderDaysPage = function(month, year) {
 	if (this.layout.name !== 'days') {
@@ -439,6 +435,9 @@ Calendar.prototype.searchClick = function() {
 		match = rdate.exec(value)
 	;
 	if (match && match[0] && match[1] && match[2] && match[3]) {
+		if (parseInt(match[3]) < 100) {
+			console.log('Warn: Calendar.prototype.searchClick Year will be interpreted as 1900 + year');
+		}
 		return this
 			.date([match[2], match[1], match[3]].join('.'))
 			.openIfNotOpened();
@@ -451,18 +450,18 @@ Calendar.prototype.inputKeyPress = function(e) {
 	if (e.ctrlKey || e.altKey || e.metaKey) {
 		return this;
 	}
-	if (e.which == null && ekeyCode === 13 || (e.which != 0 && event.charCode === 13)) {  // IE
+	if ((e.which == null && e.keyCode === 13) || (e.which != 0 && e.charCode === 13)) {
 		return this.searchClick();
 	}
 	return this;
 }
 
 Calendar.prototype.inputClick = function() {
+	return this;
 	// return this.openIfNotOpened();
 }
 
 Calendar.prototype.prevClick = function() {
-	console.log('prev click');
 	if (this.layout.name === 'days') {
 		if (this.data.page.month === 0) {
 			this.data.page.month = 11;
@@ -482,7 +481,6 @@ Calendar.prototype.prevClick = function() {
 }
 
 Calendar.prototype.nextClick = function() {
-	console.log('next click');
 	if (this.layout.name === 'days') {
 		if (this.data.page.month === 11) {
 			this.data.page.month = 0;
@@ -513,6 +511,9 @@ Calendar.prototype.infoClick = function() {
 	return this;
 }
 
-module.exports = function factory(elem, options) {
-	return new Calendar(elem, options);
+module.exports = {
+	Calendar: function factory(elem, options) {
+		return new Calendar(elem, options);
+	},
+	$: $
 }
